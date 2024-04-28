@@ -1,7 +1,7 @@
 html
 {
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 body
@@ -28,6 +28,57 @@ body a:hover
 input, textarea, select 
 {
     -webkit-appearance: none;
+}
+
+#login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login span {
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 700;
+    margin-left: 10px;
+
+}
+
+.login.page {
+    background-color: #2b3344;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login .wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ h1 {
+    font-size: 56px;
+    line-height: 60px;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 19px;
+    line-height: 35px;
+    margin-bottom: 5px;
+}
+
+.login .wrapper button {
+    background-color: #2b3344;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 15px 30px;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+
 }
 
 .doc-loader 
@@ -159,14 +210,14 @@ input, textarea, select
 
 .header-holder
 {
-    top: 60px;    
+    top: 40px;    
     position: absolute;
     right: 0;
 }
 
 .header-logo
 {
-    padding-top: 12%;
+    padding-top: 100px;
     margin-bottom: 15px;
     text-align: center;
     position: relative;
@@ -185,6 +236,13 @@ input, textarea, select
     z-index: 1;
 }
 
+#header-main-menu .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    
+}
 #header-main-menu
 {
     display: none;
@@ -202,8 +260,6 @@ input, textarea, select
 .main-menu.sm-clean
 {
     background-color: transparent;
-    padding-top: 220px;
-    padding-bottom: 150px;
 }
 
 .sm-clean a
@@ -215,6 +271,10 @@ input, textarea, select
 .sm-clean li
 {
     border: none;
+}
+
+.sm-clean li:hover a {
+    color: #007bff;
 }
 
 ul.sub-menu
@@ -392,14 +452,31 @@ ul.slides li img
 {
     background-image: url("demo-images/one_drop_home_image05.jpg");
 }
+.container {
+    margin-block: 50px;
+}
 
 .blog-top-content-holder
 {
     background-color: #2b3344;
-    min-height: 100%;          
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.homeContent
+{
+    background-color: #2b3344;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.homeWrapper {
+    min-height: 100vh;
+    width: 100%;
 }
 
-.blog-top-content-holder canvas
+:is(.blog-top-content-holder, .homeContent) canvas
 {
     position: absolute;
     top: 0;
@@ -407,20 +484,20 @@ ul.slides li img
     z-index: 0;
 }
 
-.blog-top-content-holder h1.entry-title
+:is(.blog-top-content-holder, .homeContent) h1.entry-title
 {
     font-size: 56px;
-    line-height: 60px;   
-    margin-bottom: 40px;    
+    line-height: 10px;   
+    /* margin-bottom: 40px; */
 }
 
-.blog-top-content-holder p.site-description
+:is(.blog-top-content-holder, .homeContent) p.site-description
 {
     font-size: 26px;
     line-height: 35px;
-    max-width: 870px;
+    /* max-width: 30ch; */
     margin: 0 auto;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
 }
 
 .blog-top-content
@@ -608,7 +685,7 @@ ul.slides li img
 
 .lending-actions-holder
 {
-    background-color: #2E3349;
+    background-color: #2a2e41;
 }
 
 .lend-link
@@ -619,19 +696,23 @@ ul.slides li img
     padding: 140px 0px;
     text-align: center;
     padding-right: 2%;    
+    border-radius: 10px;
     font-size: 40px;
     color: #ffffff;
     border: 4px solid white;
+    transition: all ease-out 0.25s;
 }
 
 .lend-link:hover
 {
-    background-color: #383e58;
+    background-color: #196c27;
+    transition: all ease-out 0.25s;
 }
 
 .borrow-link
 {
     background-color: #2a2e41;
+    border-radius: 10px;
     display: inline-block;
     width: 45%;
     float: right;
@@ -640,11 +721,13 @@ ul.slides li img
     font-size: 40px;
     color: #ffffff;
     border: 4px solid white;
+    transition: all ease-out 0.25s;
 }
 
 .borrow-link:hover
 {
-    background-color: #262934;
+    background-color: #892a2a;
+    transition: all ease-out 0.25s;
 }
 
 div.pp_default .pp_loaderIcon

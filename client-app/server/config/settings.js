@@ -7,11 +7,5 @@ module.exports = {
     development: {
         rootPath: rootPath,
         port: port
-    },
-    staging: {
-
-    },
-    production: {
-
     }
 }

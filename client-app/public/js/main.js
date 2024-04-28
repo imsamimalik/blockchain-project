@@ -1,35 +1,28 @@
 jQuery(document).ready(function () {
 
     var ua = navigator.userAgent.toLowerCase();
-    if ((ua.indexOf("safari/") !== -1 && ua.indexOf("windows") !== -1 && ua.indexOf("chrom") === -1) || is_touch_device())
-    {
+    if ((ua.indexOf("safari/") !== -1 && ua.indexOf("windows") !== -1 && ua.indexOf("chrom") === -1) || is_touch_device()) {
 
         jQuery("html").css('overflow', 'auto');
 
-        jQuery(".scroll-top").click(function () {
-            jQuery('html, body').animate({scrollTop: 0}, 2000);
-            return false;
-        });
-
         jQuery('.post-num-comments a').click(function (e) {
             e.preventDefault();
-            jQuery('html, body').animate({scrollTop: jQuery(this.hash).offset().top}, 2000);
+            jQuery('html, body').animate({ scrollTop: jQuery(this.hash).offset().top }, 2000);
             return false;
         });
-    } else
-    {
-        jQuery("html").niceScroll({cursorcolor: "#CDC8C1", scrollspeed: 100, mousescrollstep: 80, cursorwidth: "12px", cursorborder: "none", cursorborderradius: "0px"});
+    } else {
+        // jQuery("html").niceScroll({ cursorcolor: "#CDC8C1", scrollspeed: 100, mousescrollstep: 80, cursorwidth: "12px", cursorborder: "none", cursorborderradius: "0px" });
 
-        //Scroll Top animation
-        jQuery(".scroll-top").click(function () {
-            jQuery("html").getNiceScroll(0).doScrollTop(0);
-        });
+        // //Scroll Top animation
+        // jQuery(".scroll-top").click(function () {
+        //     jQuery("html").getNiceScroll(0).doScrollTop(0);
+        // });
 
-        //Smooth scroll on single post (comments)
-        jQuery('.post-num-comments a').click(function (e) {
-            e.preventDefault();
-            jQuery("html").getNiceScroll(0).doScrollTop(jQuery(this.hash).offset().top);
-        });
+        // //Smooth scroll on single post (comments)
+        // jQuery('.post-num-comments a').click(function (e) {
+        //     e.preventDefault();
+        //     jQuery("html").getNiceScroll(0).doScrollTop(jQuery(this.hash).offset().top);
+        // });
     }
 
     jQuery(".site-content").fitVids();
@@ -52,9 +45,9 @@ jQuery(document).ready(function () {
 $(document).ready(function () {
 
     //Fix for logo holder
-    jQuery('.logo-holder').css({'left': (jQuery('body').width() - jQuery('.logo-holder img').outerWidth()) / 2, 'bottom': 0 - (jQuery('.logo-holder img').outerHeight() / 2)});
+    jQuery('.logo-holder').css({ 'left': (jQuery('body').width() - jQuery('.logo-holder img').outerWidth()) / 2, 'bottom': 0 - (jQuery('.logo-holder img').outerHeight() / 2) });
 
-//Set menu
+    //Set menu
     jQuery('.main-menu').smartmenus({
         subMenusSubOffsetX: 1,
         subMenusSubOffsetY: -8,
@@ -65,7 +58,7 @@ $(document).ready(function () {
         var obj = $mainMenu.data('smartmenus');
         if (obj.isCollapsible()) {
             var $item = jQuery(this).parent(),
-                    $sub = $item.parent().dataSM('sub');
+                $sub = $item.parent().dataSM('sub');
             $sub.dataSM('arrowClicked', true);
         }
     }).bind({
@@ -83,7 +76,7 @@ $(document).ready(function () {
 
 
 
-//Show-Hide header sidebar
+    //Show-Hide header sidebar
     jQuery('#toggle').on("click", multiClickFunctionStop);
 
     jQuery('.carousel_pagination').each(function () {
@@ -121,8 +114,7 @@ $(document).ready(function () {
         changepicturecallback: function () {
             if (!is_touch_device()) {
                 var ua = navigator.userAgent.toLowerCase();
-                if (!(ua.indexOf("safari/") !== -1 && ua.indexOf("windows") !== -1 && ua.indexOf("chrom") === -1))
-                {
+                if (!(ua.indexOf("safari/") !== -1 && ua.indexOf("windows") !== -1 && ua.indexOf("chrom") === -1)) {
                     jQuery("html").getNiceScroll().remove();
                     jQuery("html").css("cssText", "overflow: hidden !important");
                 }
@@ -131,9 +123,8 @@ $(document).ready(function () {
         callback: function () {
             if (!is_touch_device()) {
                 var ua = navigator.userAgent.toLowerCase();
-                if (!(ua.indexOf("safari/") !== -1 && ua.indexOf("windows") !== -1 && ua.indexOf("chrom") === -1))
-                {
-                    jQuery("html").niceScroll({cursorcolor: "#CDC8C1", scrollspeed: 100, mousescrollstep: 80, cursorwidth: "12px", cursorborder: "none", cursorborderradius: "0px"});
+                if (!(ua.indexOf("safari/") !== -1 && ua.indexOf("windows") !== -1 && ua.indexOf("chrom") === -1)) {
+                    jQuery("html").niceScroll({ cursorcolor: "#CDC8C1", scrollspeed: 100, mousescrollstep: 80, cursorwidth: "12px", cursorborder: "none", cursorborderradius: "0px" });
                 }
             }
         }
@@ -147,10 +138,10 @@ $(document).ready(function () {
 jQuery(window).resize(function () {
 
     //Fix for logo holder
-    jQuery('.logo-holder').css({'left': (jQuery('body').width() - jQuery('.logo-holder img').outerWidth()) / 2, 'bottom': 0 - (jQuery('.logo-holder img').outerHeight() / 2)});
+    jQuery('.logo-holder').css({ 'left': (jQuery('body').width() - jQuery('.logo-holder img').outerWidth()) / 2, 'bottom': 0 - (jQuery('.logo-holder img').outerHeight() / 2) });
 
-//Fix for logo holder on single post
-    jQuery('.single-post .logo-holder').css({'left': (jQuery('body').width() - jQuery('.logo-holder img').outerWidth()) / 2, 'top': 0 - (jQuery('.logo-holder img').outerHeight() / 2)});
+    //Fix for logo holder on single post
+    jQuery('.single-post .logo-holder').css({ 'left': (jQuery('body').width() - jQuery('.logo-holder img').outerWidth()) / 2, 'top': 0 - (jQuery('.logo-holder img').outerHeight() / 2) });
 
 
     jQuery('.carousel_pagination').each(function () {
@@ -164,8 +155,7 @@ jQuery(window).resize(function () {
 
     var elemnt_width = Math.floor(doc_width / 3);
 
-    if (doc_width < 960)
-    {
+    if (doc_width < 960) {
         elemnt_width = Math.floor(doc_width / 2);
     }
 
@@ -187,31 +177,26 @@ jQuery(window).resize(function () {
 var multiClickFunctionStop = function (e) {
     jQuery('#toggle').off("click");
     jQuery('#toggle').toggleClass("on");
-    if (jQuery('#toggle').hasClass("on"))
-    {
-        jQuery('#header-main-menu').fadeIn(function () {
+    if (jQuery('#toggle').hasClass("on")) {
+        jQuery('nav#header-main-menu').addClass("toggled").fadeIn(function () {
             if (!is_touch_device()) {
                 var ua = navigator.userAgent.toLowerCase();
-                if (!(ua.indexOf("safari/") !== -1 && ua.indexOf("windows") !== -1 && ua.indexOf("chrom") === -1))
-                {
+                if (!(ua.indexOf("safari/") !== -1 && ua.indexOf("windows") !== -1 && ua.indexOf("chrom") === -1)) {
                     jQuery("html").getNiceScroll().remove();
                 }
             }
             jQuery("html").css("cssText", "overflow: hidden !important");
             jQuery('#toggle').on("click", multiClickFunctionStop);
         });
-    } else
-    {
-        jQuery('#header-main-menu').fadeOut(function () {
+    } else {
+        jQuery('nav#header-main-menu').removeClass("toggled").fadeOut(function () {
             jQuery('#toggle').on("click", multiClickFunctionStop);
             if (!is_touch_device()) {
                 var ua = navigator.userAgent.toLowerCase();
-                if (!(ua.indexOf("safari/") !== -1 && ua.indexOf("windows") !== -1 && ua.indexOf("chrom") === -1))
-                {
-                    jQuery("html").niceScroll({cursorcolor: "#CDC8C1", scrollspeed: 100, mousescrollstep: 80, cursorwidth: "12px", cursorborder: "none", cursorborderradius: "0px"});
+                if (!(ua.indexOf("safari/") !== -1 && ua.indexOf("windows") !== -1 && ua.indexOf("chrom") === -1)) {
+                    jQuery("html").niceScroll({ cursorcolor: "#CDC8C1", scrollspeed: 100, mousescrollstep: 80, cursorwidth: "12px", cursorborder: "none", cursorborderradius: "0px" });
                 }
-            } else
-            {
+            } else {
                 jQuery("html").css("cssText", "overflow: auto");
             }
         });
@@ -221,12 +206,3 @@ var multiClickFunctionStop = function (e) {
 function is_touch_device() {
     return !!('ontouchstart' in window);
 }
-
-jQuery(window).bind("scroll", function () {
-    if (jQuery(this).scrollTop() > 700) {
-        jQuery('.scroll-top').fadeIn(500);
-    } else
-    {
-        jQuery('.scroll-top').fadeOut(500);
-    }
-});
