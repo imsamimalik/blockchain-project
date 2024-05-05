@@ -1,11 +1,8 @@
-/**
- * Created by milenradkov on 8.03.18.
- */
 $(document).ready(async function () {
-    let peerToPeerLendingContract = '0x7cd549f00EB2d2F2EC3e6Ca415d925412bbC70c1';
-    let peerToPeerLendingContractABI = [{ "constant": true, "inputs": [{ "name": "", "type": "uint256" }], "name": "credits", "outputs": [{ "name": "", "type": "address" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "getUserCredits", "outputs": [{ "name": "", "type": "address[]" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_credit", "type": "address" }], "name": "changeCreditState", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "getCredits", "outputs": [{ "name": "", "type": "address[]" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [], "name": "destroy", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "owner", "outputs": [{ "name": "", "type": "address" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "address" }], "name": "users", "outputs": [{ "name": "credited", "type": "bool" }, { "name": "activeCredit", "type": "address" }, { "name": "fraudStatus", "type": "bool" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_borrower", "type": "address" }], "name": "setFraudStatus", "outputs": [{ "name": "", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "requestedAmount", "type": "uint256" }, { "name": "repaymentsCount", "type": "uint256" }, { "name": "interest", "type": "uint256" }, { "name": "creditDescription", "type": "bytes32" }], "name": "applyForCredit", "outputs": [{ "name": "_credit", "type": "address" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "_recipient", "type": "address" }], "name": "destroyAndSend", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [{ "name": "_credit", "type": "address" }, { "name": "state", "type": "uint8" }], "name": "changeCreditState", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "_borrower", "type": "address" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogCreditCreated", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "state", "type": "uint8" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogCreditStateChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "active", "type": "bool" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogCreditActiveChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": false, "name": "fraudStatus", "type": "bool" }, { "indexed": false, "name": "timestamp", "type": "uint256" }], "name": "LogUserSetFraud", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_currentOwner", "type": "address" }, { "indexed": true, "name": "_newOwner", "type": "address" }], "name": "LogOwnershipTransfered", "type": "event" }];
+    let peerToPeerLendingContract = '0x442F1d3Df5Ce50C838e2aeC53F4142328D54227B';
+    let peerToPeerLendingContractABI = [{ "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "bool", "name": "active", "type": "bool" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogCreditActiveChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "address", "name": "_borrower", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogCreditCreated", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "enum Credit.State", "name": "state", "type": "uint8" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogCreditStateChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_currentOwner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "_newOwner", "type": "address" }], "name": "LogOwnershipTransfered", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": false, "internalType": "bool", "name": "fraudStatus", "type": "bool" }, { "indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogUserSetFraud", "type": "event" }, { "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "name": "credits", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function", "constant": true }, { "inputs": [], "name": "destroy", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_recipient", "type": "address" }], "name": "destroyAndSend", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function", "constant": true }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "users", "outputs": [{ "internalType": "bool", "name": "credited", "type": "bool" }, { "internalType": "address", "name": "activeCredit", "type": "address" }, { "internalType": "bool", "name": "fraudStatus", "type": "bool" }], "stateMutability": "view", "type": "function", "constant": true }, { "inputs": [{ "internalType": "uint256", "name": "requestedAmount", "type": "uint256" }, { "internalType": "uint256", "name": "repaymentsCount", "type": "uint256" }, { "internalType": "uint256", "name": "interest", "type": "uint256" }, { "internalType": "bytes32", "name": "creditDescription", "type": "bytes32" }], "name": "applyForCredit", "outputs": [{ "internalType": "address", "name": "_credit", "type": "address" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "getCredits", "outputs": [{ "internalType": "address[]", "name": "", "type": "address[]" }], "stateMutability": "view", "type": "function", "constant": true }, { "inputs": [], "name": "getUserCredits", "outputs": [{ "internalType": "address[]", "name": "", "type": "address[]" }], "stateMutability": "view", "type": "function", "constant": true }, { "inputs": [{ "internalType": "address", "name": "_borrower", "type": "address" }], "name": "setFraudStatus", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "contract Credit", "name": "_credit", "type": "address" }, { "internalType": "enum Credit.State", "name": "state", "type": "uint8" }], "name": "changeCreditState", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "contract Credit", "name": "_credit", "type": "address" }], "name": "toggleCreditActiveState", "outputs": [], "stateMutability": "nonpayable", "type": "function" }]
 
-    let creditContractABI = [{ "constant": true, "inputs": [], "name": "getBalance", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_state", "type": "uint8" }], "name": "changeState", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [{ "name": "", "type": "address" }], "name": "lenders", "outputs": [{ "name": "", "type": "bool" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [], "name": "toggleActive", "outputs": [{ "name": "", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "withdraw", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "repay", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function" }, { "constant": false, "inputs": [], "name": "revokeVote", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "refund", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "destroy", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "owner", "outputs": [{ "name": "", "type": "address" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [], "name": "fraudVote", "outputs": [{ "name": "", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "invest", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function" }, { "constant": false, "inputs": [], "name": "requestInterest", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "getCreditInfo", "outputs": [{ "name": "", "type": "address" }, { "name": "", "type": "bytes32" }, { "name": "", "type": "uint256" }, { "name": "", "type": "uint256" }, { "name": "", "type": "uint256" }, { "name": "", "type": "uint256" }, { "name": "", "type": "uint256" }, { "name": "", "type": "uint256" }, { "name": "", "type": "uint8" }, { "name": "", "type": "bool" }, { "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_recipient", "type": "address" }], "name": "destroyAndSend", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "name": "_requestedAmount", "type": "uint256" }, { "name": "_requestedRepayments", "type": "uint256" }, { "name": "_interest", "type": "uint256" }, { "name": "_description", "type": "bytes32" }], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogCreditInitialized", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "state", "type": "uint8" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogCreditStateChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "active", "type": "bool" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogCreditStateActiveChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "_amount", "type": "uint256" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogBorrowerWithdrawal", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "_amount", "type": "uint256" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogBorrowerRepaymentInstallment", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogBorrowerRepaymentFinished", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "_amount", "type": "uint256" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogBorrowerChangeReturned", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "fraudStatus", "type": "bool" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogBorrowerIsFraud", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "_amount", "type": "uint256" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogLenderInvestment", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "_amount", "type": "uint256" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogLenderWithdrawal", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "_amount", "type": "uint256" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogLenderChangeReturned", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogLenderVoteForRevoking", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogLenderVoteForFraud", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_address", "type": "address" }, { "indexed": true, "name": "_amount", "type": "uint256" }, { "indexed": true, "name": "timestamp", "type": "uint256" }], "name": "LogLenderRefunded", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_currentOwner", "type": "address" }, { "indexed": true, "name": "_newOwner", "type": "address" }], "name": "LogOwnershipTransfered", "type": "event" }];
+    let creditContractABI = [{ "inputs": [{ "internalType": "uint256", "name": "_requestedAmount", "type": "uint256" }, { "internalType": "uint256", "name": "_requestedRepayments", "type": "uint256" }, { "internalType": "uint256", "name": "_interest", "type": "uint256" }, { "internalType": "bytes32", "name": "_description", "type": "bytes32" }], "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "_amount", "type": "uint256" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogBorrowerChangeReturned", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "bool", "name": "fraudStatus", "type": "bool" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogBorrowerIsFraud", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogBorrowerRepaymentFinished", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "_amount", "type": "uint256" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogBorrowerRepaymentInstallment", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "_amount", "type": "uint256" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogBorrowerWithdrawal", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogCreditInitialized", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "bool", "name": "active", "type": "bool" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogCreditStateActiveChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "enum Credit.State", "name": "state", "type": "uint8" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogCreditStateChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "_amount", "type": "uint256" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogLenderChangeReturned", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "_amount", "type": "uint256" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogLenderInvestment", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "_amount", "type": "uint256" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogLenderRefunded", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogLenderVoteForFraud", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogLenderVoteForRevoking", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_address", "type": "address" }, { "indexed": true, "internalType": "uint256", "name": "_amount", "type": "uint256" }, { "indexed": true, "internalType": "uint256", "name": "timestamp", "type": "uint256" }], "name": "LogLenderWithdrawal", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "_currentOwner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "_newOwner", "type": "address" }], "name": "LogOwnershipTransfered", "type": "event" }, { "inputs": [], "name": "active", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "borrower", "outputs": [{ "internalType": "address payable", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "description", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "destroy", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_recipient", "type": "address" }], "name": "destroyAndSend", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "fraudVoters", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "fraudVotes", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "interest", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "lastRepaymentDate", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "lenders", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "lendersCount", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "lendersInvestedAmount", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "remainingRepayments", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "repaidAmount", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "repaymentInstallment", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "requestedAmount", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "requestedDate", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "requestedRepayments", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "returnAmount", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "revokeTimeNeeded", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "revokeVoters", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "revokeVotes", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "state", "outputs": [{ "internalType": "enum Credit.State", "name": "", "type": "uint8" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "getBalance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "invest", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [], "name": "repay", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [], "name": "withdraw", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "requestInterest", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "revokeVote", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "refund", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "fraudVote", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "enum Credit.State", "name": "_state", "type": "uint8" }], "name": "changeState", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "toggleActive", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "getCreditInfo", "outputs": [{ "internalType": "address", "name": "", "type": "address" }, { "internalType": "bytes32", "name": "", "type": "bytes32" }, { "internalType": "uint256", "name": "", "type": "uint256" }, { "internalType": "uint256", "name": "", "type": "uint256" }, { "internalType": "uint256", "name": "", "type": "uint256" }, { "internalType": "uint256", "name": "", "type": "uint256" }, { "internalType": "uint256", "name": "", "type": "uint256" }, { "internalType": "uint256", "name": "", "type": "uint256" }, { "internalType": "enum Credit.State", "name": "", "type": "uint8" }, { "internalType": "bool", "name": "", "type": "bool" }, { "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }];
 
     const provider = await detectEthereumProvider();
     if (!provider) return;
@@ -21,6 +18,38 @@ $(document).ready(async function () {
             console.error(error);
         }
     });
+
+    //  window.addEventListener('DOMContentLoaded', (event) => {
+    //     console.log('DOM fully loaded and parsed');
+    //     // Check if MetaMask is installed
+    //     if (window.ethereum) {
+    //         // Request access to accounts
+    //         window.ethereum.request({ method: 'eth_requestAccounts' })
+    //             .then(accounts => {
+    //                 // If no accounts are available, redirect to the login page
+    //                 if (accounts.length === 0) {
+    //                     window.location.href = "/login";
+    //                 } else {
+    //                     // Get the first account from the array
+    //                     const yourAccountAddress = accounts[0];
+    //                     console.log("Your account address:", yourAccountAddress);
+
+    //                     // Now you can use this address in your contract interaction code
+    //                 }
+    //             })
+    //             .catch(err => {
+    //                 // Handle errors
+    //                 console.error("Error requesting accounts:", err);
+    //                 // Redirect to the login page in case of an error
+    //                 window.location.href = "/login";
+    //             });
+    //     } else {
+    //         // MetaMask is not installed
+    //         console.error("MetaMask is not installed.");
+    //         // Redirect to the login page
+    //         window.location.href = "/login";
+    //     }
+    // });
 
     const coinbase = await web3.eth.getCoinbase()
 
@@ -92,14 +121,16 @@ $(document).ready(async function () {
                                         </div>
                                         <div class="mb-3">
                                             <button type="button" class="btn btn-info" ${ creditContractInfo.state !== 2 ? 'style="display:none;"' : '' } name="requestInterest" data-contract-address="${ creditContractInfo.address }">Get interest</button>
-                                            <button type="button" class="btn btn-warning" name="revokeVote" data-contract-address="${ creditContractInfo.address }">Revoke vote</button>
+
                                             <button type="button" class="btn btn-warning" name="refund" data-contract-address="${ creditContractInfo.address }">Refund</button>
-                                            <button type="button" class="btn btn-danger" name="fraudVote" data-contract-address="${ creditContractInfo.address }">Fraud</button>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             `)
+                // <button type="button" class="btn btn-warning" name="revokeVote" data-contract-address="${ creditContractInfo.address }">Revoke vote</button>
+                // <button type="button" class="btn btn-danger" name="fraudVote" data-contract-address="${ creditContractInfo.address }">Fraud</button>
 
             }).catch(error => console.error(error));
 
@@ -157,22 +188,31 @@ $(document).ready(async function () {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, invest!'
-        }).then((result) => {
+        }).then(async (result) => {
             if (result.value) {
-                web3.eth.sendTransaction({ from: coinbase, to: address, data: getData, value: web3.utils.toWei(amount, "ether") }, function (err, result) {
-                    if (err) {
-                        console.log(err);
-                        return;
-                    }
+                try {
+                    const result = await web3.eth.sendTransaction({
+                        from: coinbase,
+                        to: address,
+                        data: getData,
+                        value: web3.utils.toWei(amount, "ether")
+                    });
+
+                    console.log("tx.hash:", result.transactionHash);
+                    console.log("invest", { result });
 
                     swal(
                         'Invested!',
                         'Your investment was sent.',
                         'success'
-                    )
+                    );
+
                     amountField.val('');
-                    console.log("tx.hash: " + result.transactionHash);
-                })
+                } catch (error) {
+                    console.error(error);
+                    // Handle error
+                }
+
             }
         })
     });
@@ -228,21 +268,35 @@ $(document).ready(async function () {
         })
     });
 
-    $('body').on('click', 'button[name="refund"]', function (e) {
+    $('body').on('click', 'button[name="refund"]', async function (e) {
         e.preventDefault();
         let address = $(this).attr('data-contract-address');
+        // let address = "0xCCe8cF4795A19D6573A39d65eEBAdAdDCCcCfDe9"
 
         console.log('refund request from ' + address);
 
         let selectedCreditContract = new web3.eth.Contract(creditContractABI, address);
-        let getData = selectedCreditContract.methods.refund().encodeABI();
-        web3.eth.sendTransaction({ from: coinbase, to: address, data: getData }, function (err, result) {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            console.log(result);
-        })
+        // let getData = selectedCreditContract.methods.refund().encodeABI();
+
+        // console.log("refund", { getData })
+
+        try {
+            // const result = await web3.eth.sendTransaction({
+            //     from: coinbase,
+            //     to: address,
+            //     data: getData
+            // });
+
+            const result = await selectedCreditContract.methods.refund().send({
+                from: coinbase
+            });
+
+
+            console.log("refund", { result });
+        } catch (error) {
+            console.error(error);
+        }
+
     });
 
     $('body').on('click', 'button[name="revokeVote"]', function (e) {
@@ -298,23 +352,29 @@ $(document).ready(async function () {
         })
     });
 
+
     $('body').on('click', 'button[name="withdraw"]', function (e) {
         e.preventDefault();
         let address = $(this).attr('data-contract-address');
         let selectedCreditContract = new web3.eth.Contract(creditContractABI, address);
-        let getData = selectedCreditContract.methods.withdraw().encodeABI();
 
         console.log('withdraw ' + address);
 
-        selectedCreditContract.methods.withdraw().call().then(function (result) {
-            swal(
-                'Success!',
-                'Your account was credited.',
-                'success'
-            )
-            console.log(result);
-        }).catch(error => console.error(error));
+        web3.eth.sendTransaction({ from: "0x6122D598AFDb5732c5bF41aaE186D28256Dbabd2", to: "0x876373F0aAe172Db333A2f38664eA0F417Ce15Ec", value: web3.utils.toWei("10", "ether") }, function (err, result) {
+
+            // selectedCreditContract.methods.withdraw().send({ from: coinbase }).then(function (result) {
+            if (result) {
+
+                swal(
+                    'Success!',
+                    'Your account was credited.',
+                    'success'
+                )
+            }
+            //     console.log(result);
+            // }).catch(error => console.error(error));
     });
+})
 
     $('body').on('submit', '#borrowRequest', function (e) {
         e.preventDefault();
@@ -409,7 +469,7 @@ $(document).ready(async function () {
                 let creditAddress = index;
                 let creditContract = new web3.eth.Contract(creditContractABI, creditAddress);
 
-                creditContract.methods.getCreditInfo.call().then(function (info) {
+                creditContract.methods.getCreditInfo().call().then(function (info) {
                     let creditContractInfo = {
                         address: creditAddress,
                         borrower: info[0],
