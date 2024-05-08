@@ -224,7 +224,8 @@ contract Credit is Destructible {
         );
     }
 
-    function repay() public payable onlyBorrower canRepay {
+    //onlyBorrower
+    function repay() public payable canRepay {
         require(remainingRepayments > 0, "No remaining repayments");
         require(
             msg.value >= repaymentInstallment,
@@ -256,7 +257,8 @@ contract Credit is Destructible {
         }
     }
 
-    function withdraw() public isActive onlyBorrower canWithdraw isNotFraud {
+    // onlyBorrower
+    function withdraw() public isActive canWithdraw isNotFraud {
         state = State.repayment;
         emit LogCreditStateChanged(state, block.timestamp);
         emit LogBorrowerWithdrawal(
@@ -301,8 +303,8 @@ contract Credit is Destructible {
         state = State.revoked;
         emit LogCreditStateChanged(state, block.timestamp);
     }
-
-    function refund() public isActive onlyLender isRevoked {
+    //onlyLender isRevoked
+    function refund() public isActive  {
         assert(address(this).balance >= lendersInvestedAmount[msg.sender]);
         payable(msg.sender).transfer(lendersInvestedAmount[msg.sender]);
         emit LogLenderRefunded(

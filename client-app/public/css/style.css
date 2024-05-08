@@ -81,6 +81,15 @@ p {
 
 }
 
+#myCredits {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap:10px;
+    margin-bottom: 100px;
+    overflow: scroll;
+}
+
 .doc-loader 
 {
     position: fixed;
